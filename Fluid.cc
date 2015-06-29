@@ -76,8 +76,8 @@ void Fluid::advect(matrix &current, matrix &previous, matrix &velocityX, matrix 
         for(int j = 1; j != fluidSize; ++j) {
             float xPosition = constrainValue(i - dtRatio * velocityX[i][j]);
             float yPosition = constrainValue(j - dtRatio * velocityY[i][j]);
-            int fromX = (int) xPosition;
-            int fromY = (int) yPosition;
+            int fromX = int (xPosition);
+            int fromY = int (yPosition);
             float dtX = xPosition - fromX;
             float dtY = yPosition - fromY;
             current[i][j] = (1 - dtX) * ((1 - dtY) * previous[fromX][fromY] + dtY * previous[fromX][fromY + 1]) +
